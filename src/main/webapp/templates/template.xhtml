@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+>
+	<ui:define name="metadata"/>
+	
+	<!-- Declarações padrões -->
+	<h:head>
+		<p:growl id="mensagem" life="3000"/>  <!-- Define a mensagem global -->
+		<h:outputStylesheet library="css" name="style.css"/> <!-- Declaração biblioteca e arquivo css -->
+		<h:outputScript library="js" name="scripts.js"/><!-- Declaração biblioteca e arquivo java -->
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	</h:head>
+	
+	<h:body>
+		<p:layout fullPage="true">
+			<p:layoutUnit position="center" resizable="false" closable="false"
+			collapsible="false"
+			>
+				<ui:include src="/componentes/navegacao.xhtml"/> <!-- Inserindo um pedaço de página com include -->
+				<p:separator/>
+				
+				<ui:insert name="conteudo"/><!--ui:insert: defini uma área que será associada por 
+											uma página principal 
+											Associando o conteudo de uma página no template -->
+			</p:layoutUnit>
+		</p:layout>
+	</h:body>
+</html>
+

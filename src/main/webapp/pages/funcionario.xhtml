@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" 
+	template="/templates/template.xhtml"
+>
+
+<ui:define name="conteudo">
+	<h:form id="formCad">
+		<h:panelGrid columns="2">
+			<f:facet name="header">Cadastro de Funcionários</f:facet>
+			
+			<h:outputLabel value="Código: "/>
+			<p:inputText readonly="true" size="5"/>
+			
+			
+			<h:outputLabel value="Nome: "/>
+			<p:inputText size="50"/>
+			
+			<p:outputLabel value="Data de Admissão: "/>
+			<p:calendar/>
+			
+			<p:outputLabel value="Férias a partir:"/>
+			<p:calendar/>
+			
+			<h:outputLabel/>
+			<h:panelGroup>
+				<h:commandButton image="/resources/img/add.png" title="Novo"/><h:outputLabel value=" "/>
+				<h:commandButton image="/resources/img/save.png" title="Salvar ou Atualizar"/>
+				<h:commandButton image="/resources/img/delete.png" title="Excluir"/>
+			</h:panelGroup>
+		</h:panelGrid>
+		
+		<p:dataTable id="tbDados" rendered="true">
+			<f:facet name="Funcionários Cadastrados"/>
+			<p:column headerText="Nome">
+				<p:outputLabel value="Ilailson Rocha"/>
+			</p:column>
+			
+			<p:column headerText="Data de admissão">
+				<h:outputLabel/>
+			</p:column>
+			
+			<p:column headerText="Férias a partir">
+				<h:outputLabel/>				
+			</p:column>
+			
+			<p:column headerText="Ação">
+				<p:commandLink  value="Editar"/>
+				
+				<p:commandLink  value="Salvar"/>
+			</p:column>
+		</p:dataTable>
+	</h:form>		
+</ui:define>
+</ui:composition>
+
