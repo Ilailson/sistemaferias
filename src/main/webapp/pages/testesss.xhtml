@@ -10,26 +10,30 @@
 
 <ui:define name="conteudo">
 	<h:form id="formCad">
-		<p:panel header="Agendamento de Férias">
-			<p:panelGrid>
-				<h:outputLabel value="Código: "/>
-				<p:inputText readonly="true" size="5"/>
-				
-				<h:outputLabel value=" Funcionário: " />
-				<p:selectOneMenu style="width:150px;">
-					<f:selectItem itemLabel="Fulando 1"/>
-					<f:selectItem itemLabel="Fulando 2"/>
-					<f:selectItem itemLabel="Fulando 3"/>
-					<f:selectItem itemLabel="Fulando 4"/>
-				</p:selectOneMenu>
-				
-				<p:outputLabel value=" Ultimo prazo: "/>
-				<p:inputText />
-			</p:panelGrid>
-			<p:separator/>
+		<h:panelGrid columns="2">
 			
-			<p:panelGrid>
-			<p:outputLabel value=" Mês: "/>
+			
+			<h:outputLabel value="Código: "/>
+			<p:inputText readonly="true" size="5"/>
+			
+			<h:outputLabel value="Funcionário: " />
+			<p:selectOneMenu >
+				<f:selectItem itemLabel="Fulando 1"/>
+				<f:selectItem itemLabel="Fulando 2"/>
+				<f:selectItem itemLabel="Fulando 3"/>
+				<f:selectItem itemLabel="Fulando 4"/>
+			</p:selectOneMenu>
+			
+			<p:outputLabel value="Equipe: "/>
+			<p:selectOneMenu>
+				<f:selectItem itemLabel="Central de Serviços"/>
+				<f:selectItem itemLabel="Suporte"/>
+				<f:selectItem itemLabel="Produção"/>
+				<f:selectItem itemLabel="Telecab"/>
+			</p:selectOneMenu>
+			
+			<p:outputLabel/><p:outputLabel/>
+			<p:outputLabel value="Mês:"/>
 			<p:selectOneMenu >
 				<f:selectItem itemLabel="Janeiro"/>
 				<f:selectItem itemLabel="Fevereiro"/>
@@ -45,30 +49,29 @@
 				<f:selectItem itemLabel="Dezembro"/>
 			</p:selectOneMenu>
 			
-			
-			<p:outputLabel value=" Inicio: "/>
+			<h:outputLabel/>
+			<h:panelGroup>
+			<p:outputLabel value="Inicio:"/>
 			<p:calendar size="10"/>
 			
-			<p:outputLabel value=" Fim: "/>
+			<p:outputLabel value="Fim:"/>
 			<p:calendar size="10"/>
 			
-			<p:outputLabel value=" Dias: "/>
+			<p:outputLabel value="Dias:"/>
 			<p:inputText size="10"/>
+			</h:panelGroup>
 			
-			<p:outputLabel value=" Retorno: "/>
-			<p:inputText size="10"/>
-			</p:panelGrid>
 			
-			<br/>
-			<h:commandButton image="/resources/img/add.png" title="Novo" style="width:30px; height:30px;"/> <h:outputLabel value=" "/>
-			<h:commandButton image="/resources/img/save.png" title="Salvar ou Atualizar" style="width:30px; height:30px;"/>
-			<h:commandButton image="/resources/img/delete.png" title="Excluir" style="width:30px; height:30px;"/>
-		</p:panel>		
+			<h:outputLabel/>
+			<h:panelGroup>
+				<h:outputLabel/> 
+				<h:commandButton image="/resources/img/add.png" title="Novo"/> <h:outputLabel value=" "/>
+				<h:commandButton image="/resources/img/save.png" title="Salvar ou Atualizar"/>
+				<h:commandButton image="/resources/img/delete.png" title="Excluir" />
+			</h:panelGroup>
+		</h:panelGrid>
 		
-			
-			
 		
-		<!-- =======================TABELA================================ -->
 		<p:dataTable id="tbDados" rendered="true">
 			<f:facet name="Funcionários Cadastrados"/>
 			<p:column headerText="Nome">

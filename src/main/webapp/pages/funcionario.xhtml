@@ -10,30 +10,41 @@
 
 <ui:define name="conteudo">
 	<h:form id="formCad">
-		<h:panelGrid columns="2">
-			<f:facet name="header">Cadastro de Funcionários</f:facet>
-			
-			<h:outputLabel value="Código: "/>
-			<p:inputText readonly="true" size="5"/>
-			
-			
-			<h:outputLabel value="Nome: "/>
-			<p:inputText size="50"/>
-			
-			<p:outputLabel value="Data de Admissão: "/>
-			<p:calendar/>
-			
-			<p:outputLabel value="Férias a partir:"/>
-			<p:calendar/>
-			
-			<h:outputLabel/>
-			<h:panelGroup>
-				<h:commandButton image="/resources/img/add.png" title="Novo"/><h:outputLabel value=" "/>
-				<h:commandButton image="/resources/img/save.png" title="Salvar ou Atualizar"/>
-				<h:commandButton image="/resources/img/delete.png" title="Excluir"/>
-			</h:panelGroup>
-		</h:panelGrid>
+		<p:panel header="Cadastro de funcionários">
+			<p:panel>
+				<h:outputLabel value="Código: "/>
+				<p:inputText readonly="true" size="5"/>
+				
+				<h:outputLabel value=" Nome: "/>
+				<p:inputText size="50"/>
+					
+				<h:outputLabel value=" Admissão: "/>
+				<p:calendar/>
+				
+				<p:outputLabel value=" Equipe: "/>
+				<p:selectOneMenu>
+					<f:selectItem itemLabel="Central de Serviços"/>
+					<f:selectItem itemLabel="Suporte"/>
+					<f:selectItem itemLabel="Produção"/>
+					<f:selectItem itemLabel="Telecab"/>
+				</p:selectOneMenu>
+				
+				<p:separator/>
+				<p:outputLabel value="Login: "/>
+				<p:inputText/>
+				
+				<p:outputLabel value=" Senha: "/>
+				<p:password/>
+				
+				<br/><br/>
+				
+					<h:commandButton image="/resources/img/add.png" title="Novo" style="width:30px; height:30px;"/> <h:outputLabel value=" "/>
+					<h:commandButton image="/resources/img/save.png" title="Salvar ou Atualizar" style="width:30px; height:30px;"/>
+					<h:commandButton image="/resources/img/delete.png" title="Excluir" style="width:30px; height:30px;"/>
+			</p:panel>
+		</p:panel>
 		
+		<!-- ========================TABELA=========================================== -->
 		<p:dataTable id="tbDados" rendered="true">
 			<f:facet name="Funcionários Cadastrados"/>
 			<p:column headerText="Nome">
