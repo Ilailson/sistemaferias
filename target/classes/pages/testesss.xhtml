@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" 
+	template="/templates/template.xhtml"
+>
+
+<ui:define name="conteudo">
+	<h:form id="formCad">
+		<h:panelGrid columns="2">
+			
+			
+			<h:outputLabel value="Código: "/>
+			<p:inputText readonly="true" size="5"/>
+			
+			<h:outputLabel value="Funcionário: " />
+			<p:selectOneMenu >
+				<f:selectItem itemLabel="Fulando 1"/>
+				<f:selectItem itemLabel="Fulando 2"/>
+				<f:selectItem itemLabel="Fulando 3"/>
+				<f:selectItem itemLabel="Fulando 4"/>
+			</p:selectOneMenu>
+			
+			<p:outputLabel value="Equipe: "/>
+			<p:selectOneMenu>
+				<f:selectItem itemLabel="Central de Serviços"/>
+				<f:selectItem itemLabel="Suporte"/>
+				<f:selectItem itemLabel="Produção"/>
+				<f:selectItem itemLabel="Telecab"/>
+			</p:selectOneMenu>
+			
+			<p:outputLabel/><p:outputLabel/>
+			<p:outputLabel value="Mês:"/>
+			<p:selectOneMenu >
+				<f:selectItem itemLabel="Janeiro"/>
+				<f:selectItem itemLabel="Fevereiro"/>
+				<f:selectItem itemLabel="Março"/>
+				<f:selectItem itemLabel="Abril"/>
+				<f:selectItem itemLabel="Maio"/>
+				<f:selectItem itemLabel="Junho"/>
+				<f:selectItem itemLabel="Julho"/>
+				<f:selectItem itemLabel="Agosto"/>
+				<f:selectItem itemLabel="Setembro"/>
+				<f:selectItem itemLabel="Outubro"/>
+				<f:selectItem itemLabel="Novembro"/>
+				<f:selectItem itemLabel="Dezembro"/>
+			</p:selectOneMenu>
+			
+			<h:outputLabel/>
+			<h:panelGroup>
+			<p:outputLabel value="Inicio:"/>
+			<p:calendar size="10"/>
+			
+			<p:outputLabel value="Fim:"/>
+			<p:calendar size="10"/>
+			
+			<p:outputLabel value="Dias:"/>
+			<p:inputText size="10"/>
+			</h:panelGroup>
+			
+			
+			<h:outputLabel/>
+			<h:panelGroup>
+				<h:outputLabel/> 
+				<h:commandButton image="/resources/img/add.png" title="Novo"/> <h:outputLabel value=" "/>
+				<h:commandButton image="/resources/img/save.png" title="Salvar ou Atualizar"/>
+				<h:commandButton image="/resources/img/delete.png" title="Excluir" />
+			</h:panelGroup>
+		</h:panelGrid>
+		
+		
+		<p:dataTable id="tbDados" rendered="true">
+			<f:facet name="Funcionários Cadastrados"/>
+			<p:column headerText="Nome">
+				<p:outputLabel value="Ilailson Rocha"/>
+			</p:column>
+			
+			<p:column headerText="Equipe">
+				<h:outputLabel/>
+			</p:column>
+			
+			<p:column headerText="Mês">
+				<h:outputLabel/>
+			</p:column>
+			
+			<p:column headerText="Férias">
+				<h:outputLabel/>				
+			</p:column>
+			
+			<p:column headerText="Retorno">
+				<h:outputLabel/>				
+			</p:column>
+			
+			<p:column headerText="Dias">
+				<h:outputLabel/>				
+			</p:column>
+			
+	
+			<p:column headerText="Ação">
+				<p:commandLink  value="Editar"/>
+				
+				<p:commandLink  value="Salvar"/>
+			</p:column>
+		</p:dataTable>
+	</h:form>		
+</ui:define>
+</ui:composition>
+

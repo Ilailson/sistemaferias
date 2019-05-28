@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+>
+
+<h:head>
+	<title>Login</title>
+</h:head>
+
+<h:body>
+	
+	<!-- style="margin-top:22%; margin-left:40%: deixa a tela no meio -->
+	<h:form id="formLogin" style="margin-top:22%; margin-left:40%;">
+	  
+	    <h1>Realize o login</h1>
+	    <h:panelGrid columns="2">
+		     <h:outputLabel value="Login:"/>
+		     <p:inputText/>
+		     
+		     <h:outputLabel value="Senha:"/>
+		     <p:password/>
+		     
+		     <h:outputLabel/>
+		     <p:commandButton value="Acessar"/>
+	    </h:panelGrid>
+	</h:form>
+</h:body>
+
+</html>
+
+
+<!-- WEB.XML: Tem que está com essa configuração basica. 
+
+	<welcome-file-list>
+		<welcome-file>index.jsf</welcome-file>
+	</welcome-file-list>
+	
+	<servlet>
+		<servlet-name>Faces Servlet</servlet-name>
+		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>Faces Servlet</servlet-name>
+		<url-pattern>*.jsf</url-pattern>
+	</servlet-mapping>
+	
+	
+	<mime-mapping>
+		<extension>jsp</extension>
+		<mime-type>application/jsp</mime-type>
+	</mime-mapping>
+ -->

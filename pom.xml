@@ -66,13 +66,13 @@
 		</dependency>
 
 		<!-- PrimeFaces -->
-		<!-- https://mvnrepository.com/artifact/org.primefaces/primefaces -->
-		<!-- PrimeFaces -->
+		
 		<dependency>
-			<groupId>org.primefaces</groupId>
-			<artifactId>primefaces</artifactId>
-			<version>6.2</version>
+		    <groupId>org.primefaces</groupId>
+		    <artifactId>primefaces</artifactId>
+		    <version>6.2</version>
 		</dependency>
+		
 
 
 		<!-- Frameworks para as mensagens padrão do jsf -->
