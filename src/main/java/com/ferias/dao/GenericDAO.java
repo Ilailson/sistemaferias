@@ -66,15 +66,19 @@ public class GenericDAO<Entidade> {
 	 * informação irá atualizar se não irá adicionar.
 	 * @param entidade
 	 */
-	public void merge(Entidade entidade) {
+	public Entidade merge(Entidade entidade) {
 		Session sessao = HibernateUtil.getFabricaDeSessoes().openSession();
 		Transaction trasacao = null;
 
 		try {
 			trasacao = sessao.beginTransaction();
-			sessao.merge(entidade);
+			
+			
+			Entidade entsalva = (Entidade) sessao.merge(entidade);
 
 			trasacao.commit();
+			
+			return entsalva;
 
 		} catch (Exception erro) {
 			if (trasacao != null) {

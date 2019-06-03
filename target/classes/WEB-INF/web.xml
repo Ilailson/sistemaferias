@@ -5,7 +5,7 @@
   <display-name>Ferias</display-name><!-- Nome da Aplicação. -->
  
   <welcome-file-list> <!-- Primeira página chamada. -->
-    <welcome-file>index.xhtml</welcome-file>
+    <welcome-file>pages/funcionario.xhtml</welcome-file>
   </welcome-file-list>
 
 	<servlet>

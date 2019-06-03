@@ -36,6 +36,7 @@
 		
 		<property name="hbm2ddl.auto">update</property>
 		<mapping class="com.ferias.domain.Funcionario" />
+		<mapping class="com.ferias.domain.Feria" />
 		
 	</session-factory>
 </hibernate-configuration>

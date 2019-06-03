@@ -68,9 +68,7 @@ public class FuncionarioBean {
 			
 			FuncionarioDAO dao = new FuncionarioDAO();
 			
-			 dao.merge(funcionario);
-			 
-			 novo();
+			 funcionario = dao.merge(funcionario);
 			 
 			 Messages.addGlobalInfo("Salvo com sucesso");
 			 
@@ -140,9 +138,10 @@ public class FuncionarioBean {
 			
 			dao.excluir(funcionario);
 			
+			list = dao.listar();
 			novo();
 			
-			list = dao.listar();
+			
 			
 			Messages.addGlobalInfo("Funcionário removido com sucesso");
 		} catch (Exception e) {
