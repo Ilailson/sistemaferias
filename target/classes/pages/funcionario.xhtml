@@ -25,7 +25,9 @@
 					<p:password value="#{funcionarioBean.funcionario.senha}" />
 					
 					<h:outputLabel value=" Admissão: " />
-					<p:calendar value="#{funcionarioBean.funcionario.admissao}" />
+					<p:calendar value="#{funcionarioBean.funcionario.admissao}" mask="99/99/9999" pattern="dd/MM/yyyy" >
+						<f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="America/Sao_paulo" locale="pt_BR"/>
+					</p:calendar>
 
 					<p:outputLabel value=" Equipe: " />
 					<p:selectOneMenu value="#{funcionarioBean.funcionario.equipe}">
@@ -33,25 +35,34 @@
 						<f:selectItem itemValue="Suporte" itemLabel="Suporte" />
 						<f:selectItem itemValue="Producao" itemLabel="Produção" />
 						<f:selectItem itemValue="Telecab" itemLabel="Telecab" />
+						<f:selectItem itemValue="Multiplataforma" itemLabel="Multiplataforma" />
 					</p:selectOneMenu>
 
 					<br />
 					<br />
 
 					<h:commandButton action="#{funcionarioBean.novo}" title="Novo"
-						image="/resources/img/add.png" style="width:30px; height:30px;" />
+						image="/resources/img/add.png" style="width:30px; height:30px;">
+						<f:ajax render="formCad:pnCad" execute="@form"/>
+					</h:commandButton>
 					<h:outputLabel value=" " />
 
 					<h:commandButton actionListener="#{funcionarioBean.salvar}"
 						title="Salvar ou Atualizar" image="/resources/img/save.png"
-						style="width:30px; height:30px;" />
+						style="width:30px; height:30px;" >
+						<f:ajax  render="formTabela:tbDados" execute="@form"/>
+						<f:ajax  render="formCad:pnCad" execute="@form"	/>	
+						<f:ajax  render=":mensagem"/>		
+					</h:commandButton>
 						
 					<h:commandButton actionListener="#{funcionarioBean.excluirForm}"
 					update=":mensagem :formTabela:tbDados "
 						title="Excluir" image="/resources/img/remove.png"
 						style="width:30px; height:30px;" 
 					>
-						
+						<f:ajax render="formTabela:tbDados" execute="@form"/>
+						<f:ajax render="formCad:pnCad" execute="@form"/>
+						<f:ajax render=":mensagem"/>
 					</h:commandButton>
 				</p:panel>
 			</p:panel>
@@ -72,7 +83,9 @@
 				</p:column>
 
 				<p:column headerText="Data de admissão">
-					<h:outputLabel value="#{obj.admissao}" />
+					<h:outputLabel value="#{obj.admissao}" >
+						<f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="America/Sao_paulo" locale="pt_BR"/>
+					</h:outputLabel>
 				</p:column>
 
 				<p:column headerText="Equipe" sortBy="#{obj.equipe}" filterBy="#{obj.equipe}">
@@ -81,9 +94,14 @@
 
 				<p:column headerText="Ação" width="100">
 					<h:commandLink actionListener="#{funcionarioBean.editar}"
-						update=":mensagem :formCad:pnCad :formTabela:tbDados ">
+						update=":formCad:pnCad :formTabela:tbDados "
+					>
 						<h:graphicImage library="img" name="edit.png" />
+						
 						<f:attribute value="#{obj}" name="linhaSelecionado" />
+						
+						<f:ajax render="formCad:pnCad" execute="@form"/>
+						<f:ajax  render="formTabela:tbDados" execute="@form"/>
 					</h:commandLink>
 					
 					<!-- Ao clicar no icon de excluir ira mostrar:
@@ -93,6 +111,8 @@
 					>
 						<h:graphicImage library="img" name="remove.png" />
 						<f:attribute value="#{obj}" name="linhaSelecionado" />
+						
+						<f:ajax render="formTabela:tbDados" execute="@form"/>
 					</p:commandLink>
 				</p:column>
 			</p:dataTable>
