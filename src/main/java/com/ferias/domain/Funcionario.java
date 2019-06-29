@@ -28,6 +28,7 @@ public class Funcionario extends GenericDomain implements Serializable {
 	private String login;
 
 	private String senha;
+	
 
 	// ============================GET SET=====================================
 
@@ -70,5 +71,6 @@ public class Funcionario extends GenericDomain implements Serializable {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+	
 
 }

@@ -32,41 +32,37 @@
 			
 			<p:panelGrid>
 			<p:outputLabel value=" Mês: "/>
-			<p:selectOneMenu value="#{feriaBean.feria.mes}" filter="true">
-				<f:selectItem noSelectionOption="true" itemLabel="[Selecione o Mês]"/>
-				<f:selectItem itemValue="JANEIRO" itemLabel="Janeiro"/>
-				<f:selectItem itemValue="FEVEREIRO" itemLabel="Fevereiro"/>
-				<f:selectItem itemValue="MARCO" itemLabel="Março"/>
-				<f:selectItem itemValue="ABRIL" itemLabel="Abril"/>
-				<f:selectItem itemValue="MAIO" itemLabel="Maio"/>
-				<f:selectItem itemValue="JUNHO" itemLabel="Junho"/>
-				<f:selectItem itemValue="JULHO" itemLabel="Julho"/>
-				<f:selectItem itemValue="AGOSTO" itemLabel="Agosto"/>
-				<f:selectItem itemValue="SETEMBRO" itemLabel="Setembro"/>
-				<f:selectItem itemValue="OUTUBRO" itemLabel="Outubro"/>
-				<f:selectItem itemValue="NOVEMBRO" itemLabel="Novembro"/>
-				<f:selectItem itemValue="DEZEMBRO" itemLabel="Dezembro"/>
-			</p:selectOneMenu>
+			<p:inputText value="#{feriaBean.feria.mes}" filter="true" id="mes" readonly="true"/>
+			
 			
 			
 			<p:outputLabel value=" Inicio: "/>
 			<p:calendar value="#{feriaBean.feria.pInicial}" size="10" mask="99/99/9999" pattern="dd/MM/yyyy">
-				<f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="America/Sao_paulo" locale="pt_BR"/>
+				<f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_paulo" locale="pt_BR"/>
+				
+				<p:ajax event="dateSelect" update="fim retorno mes"/><!-- Quando clicar na data inicial vai atualizar 
+																	o fim das férias, retorno e mês que entrou de férias -->												 
 			</p:calendar>
 			
 			<p:outputLabel value=" Dias: "/>
-			<p:inputText  value="#{feriaBean.feria.dias}" size="10" />
+			<p:selectOneMenu value="#{feriaBean.feria.dias}">
+				<f:selectItem itemValue="20" itemLabel="20"/>
+				<f:selectItem itemValue="30" itemLabel="30"/>
+				
+				<p:ajax  update="fim retorno mes"/>
+				
+			</p:selectOneMenu>
 			
 			<p:outputLabel value=" Fim: "/>
-			<p:calendar value="#{feriaBean.feria.pFinal}" size="10" mask="99/99/9999" pattern="dd/MM/yyyy">
-				<f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="America/Sao_paulo" locale="pt_BR"/>
-			</p:calendar>
+			<p:inputText value="#{feriaBean.feria.pFinal}" size="10" mask="99/99/9999" id="fim" readonly="true">
+				<f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_paulo" locale="pt_BR"/>
+			</p:inputText>
 			
 						
 			<p:outputLabel value=" Retorno: "/>
-			<p:calendar value="#{feriaBean.feria.retorno}" size="10" mask="99/99/9999" pattern="dd/MM/yyyy">
-				<f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="America/Sao_paulo" locale="pt_BR"/>
-			</p:calendar>
+			<p:inputText value="#{feriaBean.feria.retorno}" size="10" mask="99/99/9999" id="retorno" readonly="true">
+				<f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_paulo" locale="pt_BR"/>
+			</p:inputText>
 			</p:panelGrid>
 			
 			<br/>
@@ -83,7 +79,6 @@
 			>
 				<f:ajax  render="formTabela:tbDados" execute="@form"/>
 				<f:ajax  render="formCad:pnCad" execute="@form"	/>
-				<f:ajax  render="formTabela:tbDados" execute="@form"	/>
 				<f:ajax  render=":mensagem"/>	
 			</h:commandButton>
 			

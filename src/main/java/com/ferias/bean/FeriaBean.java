@@ -3,12 +3,14 @@ package com.ferias.bean;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.event.ActionEvent;
+import javax.faces.event.ValueChangeEvent;
 
 import org.omnifaces.util.Messages;
 
@@ -34,6 +36,7 @@ public class FeriaBean implements Serializable {
 	private Feria feria;
 	private List<Feria> list = new ArrayList<Feria>();
 	private List<Feria> filter = new ArrayList<Feria>();
+	private Date pinicial;
 	
 	private List<Funcionario> funcionarios = new ArrayList<Funcionario>(); //responsável por exibir ou salvar um funcionário  que esta em outra tabela.
 	
@@ -61,6 +64,14 @@ public class FeriaBean implements Serializable {
 	}
 	public void setFuncionarios(List<Funcionario> funcionarios) {
 		this.funcionarios = funcionarios;
+	}
+	
+	public Date getPinicial() {
+		return pinicial;
+	}
+	
+	public void setPinicial(Date pinicial) {
+		this.pinicial = pinicial;
 	}
 	
 	//==============================OPERACIONAL==========================================
@@ -173,4 +184,12 @@ public void editar(ActionEvent evento) {
 }
 
 
+public void diaSeleciona(ValueChangeEvent event) {
+	
+	this.pinicial= (Date) event.getNewValue();
+	
+	System.out.println("Novo valor: "+event.getNewValue());
+	
+	this.feria.setpFinal((Date) event.getNewValue());
+}
 }

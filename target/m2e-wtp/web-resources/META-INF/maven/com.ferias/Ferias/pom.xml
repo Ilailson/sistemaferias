@@ -1,11 +1,13 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.ferias</groupId>
-  <artifactId>Ferias</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>war</packaging>
-  
-  <!-- Codificação dos caracteres -->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.ferias</groupId>
+	<artifactId>Ferias</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+
+	<!-- Codificação dos caracteres -->
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
@@ -29,12 +31,12 @@
 				</configuration>
 			</plugin>
 		</plugins>
-</build>
+	</build>
 
-<!-- Dependências -->
+	<!-- Dependências -->
 	<dependencies>
-		<!-- Hibernate Core. Para o hibernete funcionar precisa criar 
-		o arquivo hibernate.cfg.xml e configurar -->
+		<!-- Hibernate Core. Para o hibernete funcionar precisa criar o arquivo 
+			hibernate.cfg.xml e configurar -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
@@ -66,13 +68,19 @@
 		</dependency>
 
 		<!-- PrimeFaces -->
-		
+
+<!-- 		<dependency> -->
+<!-- 		<groupId>org.primefaces</groupId> -->
+<!-- 		<artifactId>primefaces</artifactId> -->
+<!-- 		<version>6.1</version> -->
+<!-- 		</dependency> -->
+
 		<dependency>
-		    <groupId>org.primefaces</groupId>
-		    <artifactId>primefaces</artifactId>
-		    <version>6.1</version>
+			<groupId>org.primefaces</groupId>
+			<artifactId>primefaces</artifactId>
+			<version>7.0</version>
 		</dependency>
-		
+
 
 
 		<!-- Frameworks para as mensagens padrão do jsf -->
@@ -104,5 +112,5 @@
 			<version>1.2.4</version>
 		</dependency>
 
-</dependencies>
+	</dependencies>
 </project>
