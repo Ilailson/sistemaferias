@@ -58,7 +58,7 @@ public class Feria extends GenericDomain {
 		calendario.add(Calendar.DAY_OF_MONTH, this.getDias() - 1);// acrescetando quantidade de dias e diminuindo um
 																	// pois está acrescentando um dia a mais.
 
-		return calendario.getTime();
+		return pFinal = calendario.getTime(); //atribuindo o valor digitado automaticamente no final das férias para a variavel pfiinal
 
 	}
 

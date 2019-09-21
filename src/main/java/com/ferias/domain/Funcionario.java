@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -21,15 +22,20 @@ public class Funcionario extends GenericDomain implements Serializable {
 	private String nome;
 
 	@Temporal(TemporalType.DATE)
-	private Date admissao;
+	private Date admissao = new Date();//gera  a data atual na  visão (inputtx  ou output)
 
-	private String equipe;
+	@ManyToOne//Muitos funcionários pode está dentro de uma equipe
+	private Equipe equipe;
+	
+	@ManyToOne//muitos funcionários podem ter o mesmo perfil
+	private PerfilUser perfilUser;
 
 	private String login;
 
 	private String senha;
 	
 
+	
 	// ============================GET SET=====================================
 
 	public String getNome() {
@@ -37,7 +43,7 @@ public class Funcionario extends GenericDomain implements Serializable {
 	}
 
 	public void setNome(String nome) {
-		this.nome = nome;
+		this.nome = nome.toUpperCase();
 	}
 
 	public Date getAdmissao() {
@@ -48,11 +54,11 @@ public class Funcionario extends GenericDomain implements Serializable {
 		this.admissao = admissao;
 	}
 
-	public String getEquipe() {
+	public Equipe getEquipe() {
 		return equipe;
 	}
 
-	public void setEquipe(String equipe) {
+	public void setEquipe(Equipe equipe) {
 		this.equipe = equipe;
 	}
 
@@ -71,6 +77,16 @@ public class Funcionario extends GenericDomain implements Serializable {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+
+	public PerfilUser getPerfilUser() {
+		return perfilUser;
+	}
+
+	public void setPerfilUser(PerfilUser perfilUser) {
+		this.perfilUser = perfilUser;
+	}
+	
 	
 
+	
 }

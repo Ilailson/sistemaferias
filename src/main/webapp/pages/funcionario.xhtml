@@ -30,12 +30,19 @@
 					</p:calendar>
 
 					<p:outputLabel value=" Equipe: " />
-					<p:selectOneMenu value="#{funcionarioBean.funcionario.equipe}">
-						<f:selectItem itemValue="Central" itemLabel="Central de Serviços" />
-						<f:selectItem itemValue="Suporte" itemLabel="Suporte" />
-						<f:selectItem itemValue="Producao" itemLabel="Produção" />
-						<f:selectItem itemValue="Telecab" itemLabel="Telecab" />
-						<f:selectItem itemValue="Multiplataforma" itemLabel="Multiplataforma" />
+					<p:selectOneMenu value="#{funcionarioBean.funcionario.equipe}" 
+					converter="omnifaces.SelectItemsConverter" filter="true">
+						<f:selectItem itemValue="" itemLabel="Selecione" />
+						<f:selectItems value="#{funcionarioBean.equipes}" var="var"
+							itemValue="#{var}" itemLabel="#{var.nome}"/>						
+					</p:selectOneMenu>
+					
+					<p:outputLabel value=" Perfil: " />
+					<p:selectOneMenu value="#{funcionarioBean.funcionario.perfilUser}" 
+					converter="omnifaces.SelectItemsConverter" filter="true">
+						<f:selectItem itemValue="" itemLabel="Selecione" />
+						<f:selectItems value="#{funcionarioBean.perfilUsers}" var="var"
+							itemValue="#{var}" itemLabel="#{var.nome}"/>						
 					</p:selectOneMenu>
 
 					<br />
@@ -88,8 +95,8 @@
 					</h:outputLabel>
 				</p:column>
 
-				<p:column headerText="Equipe" sortBy="#{obj.equipe}" filterBy="#{obj.equipe}">
-					<h:outputLabel value="#{obj.equipe}" />
+				<p:column headerText="Equipe" sortBy="#{obj.equipe.nome}" filterBy="#{obj.equipe.nome}">
+					<h:outputLabel value="#{obj.equipe.nome}" />
 				</p:column>
 
 				<p:column headerText="Ação" width="100">

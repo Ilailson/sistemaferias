@@ -69,17 +69,17 @@
 
 		<!-- PrimeFaces -->
 
-<!-- 		<dependency> -->
-<!-- 		<groupId>org.primefaces</groupId> -->
-<!-- 		<artifactId>primefaces</artifactId> -->
-<!-- 		<version>6.1</version> -->
-<!-- 		</dependency> -->
-
 		<dependency>
-			<groupId>org.primefaces</groupId>
-			<artifactId>primefaces</artifactId>
-			<version>7.0</version>
+		<groupId>org.primefaces</groupId>
+		<artifactId>primefaces</artifactId>
+		<version>6.1</version>
 		</dependency>
+
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.primefaces</groupId> -->
+<!-- 			<artifactId>primefaces</artifactId> -->
+<!-- 			<version>7.0</version> -->
+<!-- 		</dependency> -->
 
 
 
@@ -110,6 +110,20 @@
 			<groupId>org.apache.shiro</groupId>
 			<artifactId>shiro-core</artifactId>
 			<version>1.2.4</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>4.3.8.Final</version>
+			<scope>compile</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>4.3.8.Final</version>
+			<scope>compile</scope>
 		</dependency>
 
 	</dependencies>

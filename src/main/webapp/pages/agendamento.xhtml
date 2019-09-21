@@ -4,155 +4,162 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui" 
-	template="/templates/template.xhtml"
->
+	xmlns:p="http://primefaces.org/ui" template="/templates/template.xhtml">
 
-<ui:define name="conteudo">
-	<h:form id="formCad">
-		<p:panel header="Agendamento de Férias" id="pnCad">
-			<p:panelGrid>
-				<h:outputLabel value="Código: "/>
-				<p:inputText readonly="true" size="5" value="#{feriaBean.feria.codigo}"
-				
-				/>
-				
-				<h:outputLabel value=" Funcionário: " />
-				<p:selectOneMenu  value="#{feriaBean.feria.funcionario}"
-				converter="omnifaces.SelectItemsConverter" filter="true">
-					<f:selectItem noSelectionOption="true" itemLabel="- [Selecione ]-"/>
-					
-					<f:selectItems value="#{feriaBean.funcionarios}" var="fun"
-					itemValue="#{fun}" itemLabel="#{fun.nome}"
-					/><!-- Pega um funcionário  escolhido da tabela funcionário -->
-				</p:selectOneMenu>
-			</p:panelGrid>
-			
-			<p:separator/>
-			
-			<p:panelGrid>
-			<p:outputLabel value=" Mês: "/>
-			<p:inputText value="#{feriaBean.feria.mes}" filter="true" id="mes" readonly="true"/>
-			
-			
-			
-			<p:outputLabel value=" Inicio: "/>
-			<p:calendar value="#{feriaBean.feria.pInicial}" size="10" mask="99/99/9999" pattern="dd/MM/yyyy">
-				<f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_paulo" locale="pt_BR"/>
-				
-				<p:ajax event="dateSelect" update="fim retorno mes"/><!-- Quando clicar na data inicial vai atualizar 
-																	o fim das férias, retorno e mês que entrou de férias -->												 
-			</p:calendar>
-			
-			<p:outputLabel value=" Dias: "/>
-			<p:selectOneMenu value="#{feriaBean.feria.dias}">
-				<f:selectItem itemValue="20" itemLabel="20"/>
-				<f:selectItem itemValue="30" itemLabel="30"/>
-				
-				<p:ajax  update="fim retorno mes"/>
-				
-			</p:selectOneMenu>
-			
-			<p:outputLabel value=" Fim: "/>
-			<p:inputText value="#{feriaBean.feria.pFinal}" size="10" mask="99/99/9999" id="fim" readonly="true">
-				<f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_paulo" locale="pt_BR"/>
-			</p:inputText>
-			
-						
-			<p:outputLabel value=" Retorno: "/>
-			<p:inputText value="#{feriaBean.feria.retorno}" size="10" mask="99/99/9999" id="retorno" readonly="true">
-				<f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_paulo" locale="pt_BR"/>
-			</p:inputText>
-			</p:panelGrid>
-			
-			<br/>
-			<h:commandButton actionListener="#{feriaBean.novo}"
-			image="/resources/img/add.png" title="Novo" style="width:30px; height:30px;"
-			>
-			<f:ajax render="formCad:pnCad" execute="@form"/>
-			</h:commandButton>
-			
-			 <h:outputLabel value=" "/>
-			 
-			<h:commandButton actionListener="#{feriaBean.salvar}"
-			image="/resources/img/save.png" title="Salvar ou Atualizar" style="width:30px; height:30px;"
-			>
-				<f:ajax  render="formTabela:tbDados" execute="@form"/>
-				<f:ajax  render="formCad:pnCad" execute="@form"	/>
-				<f:ajax  render=":mensagem"/>	
-			</h:commandButton>
-			
-			<h:commandButton actionListener="#{feriaBean.excluirForm}"
-			image="/resources/img/delete.png" title="Excluir" style="width:30px; height:30px;"
-			>
-				<f:ajax render="formTabela:tbDados" execute="@form"/>
-				<f:ajax render="formCad:pnCad" execute="@form"/>
-				<f:ajax render=":mensagem"/>
-			</h:commandButton>
-		</p:panel>		
-	</h:form>
-			
-			
-		
+	<ui:define name="conteudo">
+		<h:form id="formCad">
+			<p:panel header="Agendamento de Férias" id="pnCad">
+				<p:panelGrid>
+					<h:outputLabel value="Código: " />
+					<p:inputText readonly="true" size="5"
+						value="#{feriaBean.feria.codigo}" />
+
+					<h:outputLabel value=" Funcionário: " />
+					<p:selectOneMenu value="#{feriaBean.feria.funcionario}"
+						converter="omnifaces.SelectItemsConverter" filter="true">
+						<f:selectItem noSelectionOption="true" itemLabel="- [Selecione ]-" />
+
+						<f:selectItems value="#{feriaBean.funcionarios}" var="fun"
+							itemValue="#{fun}" itemLabel="#{fun.nome}" />
+						<!-- Pega um funcionário  escolhido da tabela funcionário -->
+					</p:selectOneMenu>
+				</p:panelGrid>
+
+				<p:separator />
+
+				<p:panelGrid>
+					<p:outputLabel value=" Mês: " />
+					<p:inputText value="#{feriaBean.feria.mes}" filter="true" id="mes"
+						readonly="true" />
+
+
+
+					<p:outputLabel value=" Inicio: " />
+					<p:calendar value="#{feriaBean.feria.pInicial}" size="10"
+						mask="99/99/9999" pattern="dd/MM/yyyy">
+						<f:convertDateTime pattern="dd/MM/yyyy"
+							timeZone="America/Sao_paulo" locale="pt_BR" />
+
+						<p:ajax event="dateSelect" update="fim retorno mes" />
+						<!-- Quando clicar na data inicial vai atualizar 
+																	o fim das férias, retorno e mês que entrou de férias -->
+					</p:calendar>
+
+					<p:outputLabel value=" Dias: " />
+					<p:selectOneMenu value="#{feriaBean.feria.dias}">
+						<f:selectItem itemValue="20" itemLabel="20" />
+						<f:selectItem itemValue="30" itemLabel="30" />
+
+						<p:ajax update="fim retorno mes" />
+
+					</p:selectOneMenu>
+
+					<p:outputLabel value=" Fim: " />
+					<p:inputText value="#{feriaBean.feria.pFinal}" size="10"
+						mask="99/99/9999" id="fim" readonly="true">
+						<f:convertDateTime pattern="dd/MM/yyyy"
+							timeZone="America/Sao_paulo" locale="pt_BR" />
+					</p:inputText>
+
+
+					<p:outputLabel value=" Retorno: " />
+					<p:inputText value="#{feriaBean.feria.retorno}" size="10"
+						mask="99/99/9999" id="retorno" readonly="true">
+						<f:convertDateTime pattern="dd/MM/yyyy"
+							timeZone="America/Sao_paulo" locale="pt_BR" />
+					</p:inputText>
+				</p:panelGrid>
+
+				<br />
+				<h:commandButton actionListener="#{feriaBean.novo}"
+					image="/resources/img/add.png" title="Novo"
+					style="width:30px; height:30px;">
+					<f:ajax render="formCad:pnCad" execute="@form" />
+				</h:commandButton>
+
+				<h:outputLabel value=" " />
+
+				<h:commandButton actionListener="#{feriaBean.salvar}"
+					image="/resources/img/save.png" title="Salvar ou Atualizar"
+					style="width:30px; height:30px;">
+					<f:ajax render="formTabela:tbDados" execute="@form" />
+					<f:ajax render="formCad:pnCad" execute="@form" />
+					<f:ajax render=":mensagem" />
+				</h:commandButton>
+
+				<h:commandButton actionListener="#{feriaBean.excluirForm}"
+					image="/resources/img/delete.png" title="Excluir"
+					style="width:30px; height:30px;">
+					<f:ajax render="formTabela:tbDados" execute="@form" />
+					<f:ajax render="formCad:pnCad" execute="@form" />
+					<f:ajax render=":mensagem" />
+				</h:commandButton>
+			</p:panel>
+		</h:form>
+
+
+
 		<!-- =======================TABELA================================ -->
 		<h:form id="formTabela">
-		<p:dataTable value="#{feriaBean.list}" var="obj" id="tbDados" 
-		paginator="true" rows="5">
-			<f:facet name="Funcionários Cadastrados"/>
-			<p:column headerText="Nome" filterBy="#{obj.funcionario.nome}">
-				<p:outputLabel value="#{obj.funcionario.nome}"/>
-			</p:column>
-			
-			<p:column headerText="Equipe" filterBy="#{obj.funcionario.equipe}">
-				<h:outputLabel value="#{obj.funcionario.equipe}"/>
-			</p:column>
-			
-			<p:column headerText="Mês" filterBy="#{obj.mes}">
-				<h:outputLabel value="#{obj.mes}"/>
-			</p:column>
-			
-			<p:column headerText="Férias">
-				<h:outputLabel value="#{obj.pInicial}">
-					<f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="America/Sao_paulo" locale="pt_BR"/>
-				</h:outputLabel>				
-			</p:column>
-			
-			<p:column headerText="Dias">
-				<h:outputLabel value="#{obj.dias}"/>				
-			</p:column>
-			
-			<p:column headerText="Retorno">
-				<h:outputLabel value="#{obj.pFinal}">
-					<f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="America/Sao_paulo" locale="pt_BR"/>
-				</h:outputLabel>				
-			</p:column>
-			
-			
-			
-	
-	<!-- ===================COMANDOS AÇÃO DA TABELA==================================== -->
-			<p:column headerText="Ação">
-				<p:commandLink actionListener="#{feriaBean.editar}"
-				update=":formCad:pnCad :formTabela:tbDados">
-					<h:graphicImage library="img" name="edit.png" />
-					<f:attribute value="#{obj}" name="linhaSelecionado" />
-					<f:ajax render="formCad:pnCad" execute="@form"/>
-				</p:commandLink>
-				
-				<p:commandLink actionListener="#{feriaBean.excluir}"
-				update=":mensagem :formTabela:tbDados">
-					<h:graphicImage library="img" name="remove.png" />
-					<f:attribute value="#{obj}" name="linhaSelecionado" />
-					
-					<f:ajax render="formTabela:tbDados" execute="@form"/>
-				</p:commandLink>
-			</p:column>
-		</p:dataTable>
-	</h:form>		
-</ui:define>
+			<p:dataTable value="#{feriaBean.list}" var="obj" id="tbDados"
+				paginator="true" rows="5" paginatorPosition="bottom" paginatorAlwaysVisible="false" >
+				<f:facet name="Funcionários Cadastrados" />
+				<p:column headerText="Nome" filterBy="#{obj.funcionario.nome}">
+					<p:outputLabel value="#{obj.funcionario.nome}" />
+				</p:column>
+
+				<p:column headerText="Equipe" filterBy="#{obj.funcionario.equipe}">
+					<h:outputLabel value="#{obj.funcionario.equipe.nome}" />
+				</p:column>
+
+				<p:column headerText="Mês" filterBy="#{obj.mes}">
+					<h:outputLabel value="#{obj.mes}" />
+				</p:column>
+
+				<p:column headerText="Férias">
+					<h:outputLabel value="#{obj.pInicial}">
+						<f:convertDateTime type="date" pattern="dd/MM/yyyy"
+							timeZone="America/Sao_paulo" locale="pt_BR" />
+					</h:outputLabel>
+				</p:column>
+
+				<p:column headerText="Dias">
+					<h:outputLabel value="#{obj.dias}" />
+				</p:column>
+
+				<p:column headerText="Retorno">
+					<h:outputLabel value="#{obj.pFinal}">
+						<f:convertDateTime type="date" pattern="dd/MM/yyyy"
+							timeZone="America/Sao_paulo" locale="pt_BR" />
+					</h:outputLabel>
+				</p:column>
+
+
+
+
+				<!-- ===================COMANDOS AÇÃO DA TABELA==================================== -->
+				<p:column headerText="Ação">
+					<p:commandLink actionListener="#{feriaBean.editar}"
+						update=":formCad:pnCad :formTabela:tbDados">
+						<h:graphicImage library="img" name="edit.png" />
+						<f:attribute value="#{obj}" name="linhaSelecionado" />
+						<f:ajax render="formCad:pnCad" execute="@form" />
+					</p:commandLink>
+
+					<p:commandLink actionListener="#{feriaBean.excluir}"
+						update=":mensagem :formTabela:tbDados">
+						<h:graphicImage library="img" name="remove.png" />
+						<f:attribute value="#{obj}" name="linhaSelecionado" />
+
+						<f:ajax render="formTabela:tbDados" execute="@form" />
+					</p:commandLink>
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</ui:define>
 </ui:composition>
 
- <!-- SelectOneMenu de Funcionário:.
+<!-- SelectOneMenu de Funcionário:.
  converter="omnifaces.SelectItemsConverter": signica aquela conversão de Bigdecimal para 
  String para  poder salvar o código
   -->
