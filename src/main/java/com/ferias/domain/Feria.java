@@ -32,6 +32,8 @@ public class Feria extends GenericDomain {
 	private String mes;
 
 	private int dias = 20;
+	
+	private int ano;
 
 	@Temporal(TemporalType.DATE)
 	private Date retorno;
@@ -75,50 +77,50 @@ public class Feria extends GenericDomain {
 
 		switch (calendario.get(Calendar.MONTH)) {
 		case 0:
-			mes = "Janeiro";
+			mes = "JANEIRO";
 			break;
 
 		case 1:
-			mes = "Fevereiro";
+			mes = "FEVEREIRO";
 			break;
 		case 2:
-			mes = "Março";
+			mes = "MARÇO";
 			break;
 
 		case 3:
-			mes = "Abril";
+			mes = "ABRIL";
 			break;
 
 		case 4:
-			mes = "Maio";
+			mes = "MAIO";
 			break;
 
 		case 5:
-			mes = "Junho";
+			mes = "JUNHO";
 			break;
 
 		case 6:
-			mes = "Julho";
+			mes = "JULHO";
 			break;
 
 		case 7:
-			mes = "Agosto";
+			mes = "AGOSTO";
 			break;
 
 		case 8:
-			mes = "Setembro";
+			mes = "SETEMBRO";
 			break;
 
 		case 9:
-			mes = "Outubro";
+			mes = "OUTUBRO";
 			break;
 
 		case 10:
-			mes = "Novembro";
+			mes = "NOVEMBRO";
 			break;
 
 		case 11:
-			mes = "Dezembro";
+			mes = "DEZEMBRO";
 			break;
 
 		default:
@@ -141,14 +143,40 @@ public class Feria extends GenericDomain {
 	}
 
 	public Date getRetorno() {
+		int dia;
 		Calendar calendario = Calendar.getInstance();
-		calendario.setTime(this.getpFinal());// pegando o periodo final
-		calendario.add(Calendar.DAY_OF_MONTH, 1);// acrestando um dia a mas para o retorno.
-		return retorno = calendario.getTime();
+		calendario.setTime(this.getpFinal());//pegando o periodo final
+		dia = calendario.get(Calendar.DAY_OF_WEEK);
+		System.out.println("Dia deo retorno "+dia);
+		
+		int a = calendario.get(Calendar.YEAR);//pegando o ano
+		System.out.println("Ano: "+a);
+		
+		this.ano = a;
+		
+		if(dia==6) {//se for domingo acrescenta dois dias
+			
+			calendario.add(Calendar.DAY_OF_MONTH, 2);
+			return retorno= calendario.getTime();		
+		}else if (dia==5) {//se for sabado acresceta tres dias. 
+			calendario.add(Calendar.DAY_OF_MONTH, 3);
+			return retorno= calendario.getTime();
+		}
+		
+		calendario.add(Calendar.DAY_OF_MONTH, 1);
+		return retorno= calendario.getTime();
 	}
 
 	public void setRetorno(Date retorno) {
 		this.retorno = retorno;
+	}
+	
+	public int getAno() {
+		return ano;
+	}
+	
+	public void setAno(int ano) {
+		this.ano = ano;
 	}
 
 }

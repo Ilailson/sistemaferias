@@ -114,7 +114,7 @@ public class FeriaBean implements Serializable {
 		try {
 			FeriaDao dao = new FeriaDao();
 
-
+			
 			FuncionarioDAO funcionarioDAO = new FuncionarioDAO();// chamado o funcionariodao
 			funcionarios = funcionarioDAO.listar(); // mostrar os funcionários que serão salvo o agendamento
 

@@ -36,9 +36,9 @@
 
 					<p:outputLabel value=" Inicio: " />
 					<p:calendar value="#{feriaBean.feria.pInicial}" size="10"
-						mask="99/99/9999" pattern="dd/MM/yyyy">
-						<f:convertDateTime pattern="dd/MM/yyyy"
-							timeZone="America/Sao_paulo" locale="pt_BR" />
+					mask="99/99/9999" pattern="dd/MM/yyyy" locale="pt_BR"  timeZone="America/Sao_paulo" id="inicio"
+					>
+						<f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_paulo" locale="pt_BR" />
 
 						<p:ajax event="dateSelect" update="fim retorno mes" />
 						<!-- Quando clicar na data inicial vai atualizar 

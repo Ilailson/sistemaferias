@@ -34,7 +34,7 @@ public class Funcionario extends GenericDomain implements Serializable {
 
 	private String senha;
 	
-
+	private Integer matricula;
 	
 	// ============================GET SET=====================================
 
@@ -86,7 +86,13 @@ public class Funcionario extends GenericDomain implements Serializable {
 		this.perfilUser = perfilUser;
 	}
 	
+	public Integer getMatricula() {
+		return matricula;
+	}
 	
+	public void setMatricula(Integer matricula) {
+		this.matricula = matricula;
+	}
 
 	
 }
