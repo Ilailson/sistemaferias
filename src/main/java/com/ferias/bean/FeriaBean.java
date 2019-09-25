@@ -108,19 +108,26 @@ public class FeriaBean implements Serializable {
 	}
 
 	/**
-	 * Responsável por salvar uma féria de um funcionário.
+	 * Responsável por salvar uma féria de um funcionário validando por quantidade por equipe
 	 */
 	public void salvar() {
 		try {
 			FeriaDao dao = new FeriaDao();
+			
+
+			if (!dao.validarFerias(feria)) {
+				Messages.addGlobalInfo
+				("A equipe " +feria.getFuncionario().getEquipe().getNome()+
+				" já tem "+feria.getFuncionario().getEquipe().getQuantidade_ferias()+ 
+				" funcionário (s) de férias que é a quantidade máxima permitida  para o período informado");
+				return; //retorana para a mesma página. 
+			}
 
 			
 			FuncionarioDAO funcionarioDAO = new FuncionarioDAO();// chamado o funcionariodao
 			funcionarios = funcionarioDAO.listar(); // mostrar os funcionários que serão salvo o agendamento
 
 			feria = dao.merge(feria);
-
-			// feria = dao.merge(feria); // salvando a feria com o funcionario
 
 			listar();// atualizando a tabela
 
